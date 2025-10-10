@@ -1,3 +1,5 @@
+//  username 기반으로 리팩토링된 ChatThreadController
+
 package org.example.unplugchatbotservice.controller;
 
 import lombok.RequiredArgsConstructor;
@@ -15,30 +17,46 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/threads")
 @RequiredArgsConstructor
 public class ChatThreadController {
+
     private final ChatThreadService chatThreadService;
 
     @PostMapping
-    public ResponseEntity<ChatThreadResponseDto> createThread(@RequestBody ChatThreadDto dto) {
+    public ResponseEntity<ChatThreadResponseDto> createThread(
+            @RequestHeader("X-Auth-Username") String username,
+            @RequestBody ChatThreadDto dto
+    ) {
+        dto.setUsername(username);
         ChatThreadEntity created = chatThreadService.createThread(dto);
         return ResponseEntity.ok(ChatThreadResponseDto.toDto(created));
     }
 
+    // 소유자 검증 추가
     @GetMapping("/{threadId}")
-    public ResponseEntity<ChatThreadResponseDto> getThreadById(@PathVariable Long threadId) {
-        ChatThreadEntity thread = chatThreadService.getThreadById(threadId);
+    public ResponseEntity<ChatThreadResponseDto> getThreadById(
+            @RequestHeader("X-Auth-Username") String username,
+            @PathVariable Long threadId
+    ) {
+        ChatThreadEntity thread = chatThreadService.getThreadById(threadId, username);
         return ResponseEntity.ok(ChatThreadResponseDto.toDto(thread));
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<ChatThreadResponseDto>> getThreadByUser(@PathVariable Long userId) {
-        List<ChatThreadEntity> threads = chatThreadService.getThreadsByUser(userId);
-        List<ChatThreadResponseDto> response = threads.stream().map(ChatThreadResponseDto::toDto).collect(Collectors.toList());
+
+    @GetMapping("/me")
+    public ResponseEntity<List<ChatThreadResponseDto>> getThreadsByUsername(
+            @RequestHeader("X-Auth-Username") String username
+    ) {
+        List<ChatThreadResponseDto> response = chatThreadService.getThreadsByUsername(username).stream()
+                .map(ChatThreadResponseDto::toDto)
+                .collect(Collectors.toList());
         return ResponseEntity.ok(response);
     }
+
     @DeleteMapping("/{threadId}")
-    public ResponseEntity<Void> deleteThread(@PathVariable Long threadId) {
-        chatThreadService.deleteThread(threadId);
+    public ResponseEntity<Void> deleteThread(
+            @RequestHeader("X-Auth-Username") String username,
+            @PathVariable Long threadId
+    ) {
+        chatThreadService.deleteThread(username, threadId);
         return ResponseEntity.noContent().build();
     }
-
 }

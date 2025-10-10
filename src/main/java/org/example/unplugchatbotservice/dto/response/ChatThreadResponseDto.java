@@ -1,3 +1,5 @@
+// ✅ username 기반으로 리팩토링된 ChatThreadResponseDto
+
 package org.example.unplugchatbotservice.dto.response;
 
 import lombok.Getter;
@@ -13,7 +15,7 @@ import java.time.LocalDateTime;
 public class ChatThreadResponseDto {
     private Long threadId;
     private String title;
-    private Long userId;
+    private String username;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
@@ -21,7 +23,7 @@ public class ChatThreadResponseDto {
         ChatThreadResponseDto dto = new ChatThreadResponseDto();
         dto.threadId = entity.getThreadId();
         dto.title = entity.getTitle();
-        dto.userId = entity.getUserId();
+        dto.username = entity.getUsername();
         dto.createdDate = entity.getCreatedDate();
         dto.updatedDate = entity.getUpdateDate();
         return dto;
