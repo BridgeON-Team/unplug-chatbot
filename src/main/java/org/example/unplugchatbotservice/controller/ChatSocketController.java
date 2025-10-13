@@ -10,6 +10,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
+import java.security.Principal;
+
 @Controller
 @RequiredArgsConstructor
 public class ChatSocketController {
@@ -19,15 +21,23 @@ public class ChatSocketController {
 
     @MessageMapping("/threads/{threadId}/send")
     @SendTo("/topic/threads/{threadId}")
-    public ChatMessageDto sendMessage(@DestinationVariable Long threadId, ChatMessageDto dto) {
+    public ChatMessageDto sendMessage(@DestinationVariable Long threadId,
+                                      ChatMessageDto dto,
+                                      Principal principal) {
 
-        // 1. 클라이언트가 잘못된 threadId + username 조합을 보내는 것을 방지
-        chatThreadService.validateThreadOwnership(threadId, dto.getUsername());
+        // 인증된 사용자명 사용
+        String username = principal.getName();
 
-        // 2. threadId 설정 (URL과 dto 분리 방지)
+        // 1. 보낸 사람 검증 (dto가 아닌, 인증된 사용자 기반으로)
+        chatThreadService.validateThreadOwnership(threadId, username);
+
+        // 2. threadId와 username 명시적으로 지정
         dto.setThreadId(threadId);
+        dto.setUsername(username);
 
         // 3. 메시지 저장 및 bot 응답 처리
-        return ChatMessageDto.toDto(chatMessageService.sendMessage(dto));
+        ChatMessageEntity saved = chatMessageService.sendMessage(dto);
+        return ChatMessageDto.toDto(saved);
     }
+
 }
