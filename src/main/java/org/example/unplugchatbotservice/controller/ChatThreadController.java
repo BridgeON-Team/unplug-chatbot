@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/threads")
+@RequestMapping("/chatbot/threads")
 @RequiredArgsConstructor
 public class ChatThreadController {
 
