@@ -23,6 +23,7 @@ public class ChatMessageService {
     private final ChatThreadRepository chatThreadRepository;
     private final GptService gptService;
     private final SimpMessagingTemplate messagingTemplate;
+    private final ChatThreadService chatThreadService;
 
     private static final String BOT_USERNAME = "BOT";
 
@@ -47,7 +48,11 @@ public class ChatMessageService {
 
     @Transactional(readOnly = true)
     public List<ChatMessageEntity> getMessagesByThread(Long threadId, String username) {
-        return chatMessageRepository.findByChatThreadThreadIdAndUsernameOrderByCreatedAtAsc(threadId, username);
+        // 1. 해당 thread가 username의 소유인지 검증
+        chatThreadService.validateThreadOwnership(threadId, username);
+
+        // 2️. 해당 thread의 모든 메시지 조회 (USER + BOT)
+        return chatMessageRepository.findByChatThreadThreadIdOrderByCreatedAtAsc(threadId);
     }
 
 
