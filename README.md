@@ -1,4 +1,4 @@
-# 📱 UnPlug
+#  UnPlug
 ### MSA 기반 AI 스마트폰 디톡스 서비스
 
 > 스마트폰 과의존 문제를 완화하고,  
@@ -7,7 +7,7 @@
 
 ---
 
-## 🔗 Project Overview
+##  Project Overview
 
 - **Project Name**: UnPlug  
 - **Type**: Team Project (BridgeON)  
@@ -17,7 +17,7 @@
 
 ---
 
-## 🎯 Service Goal
+##  Service Goal
 
 - 스마트폰 과의존 및 중독 문제 완화  
 - 단순 사용 시간 제한이 아닌 **자기 통제 중심 디톡스 제공**  
@@ -26,7 +26,7 @@
 
 ---
 
-## 🧩 Key Features
+##  Key Features
 
 - **AI Chatbot**
   - OpenAI API 기반
@@ -40,7 +40,7 @@
 
 ---
 
-## 🏗 System Architecture (MSA)
+##  System Architecture (MSA)
 
 - **Gateway Service**
   - 인증 및 요청 진입점
@@ -58,7 +58,7 @@
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React Native
@@ -81,7 +81,7 @@
 
 ---
 
-## 👤 My Role (Backend / Chatbot Service)
+##  My Role (Backend / Chatbot Service)
 
 - Chatbot Service 설계 및 구현  
 - OpenAI API 연동 및 AI 응답 흐름 설계  
@@ -91,7 +91,7 @@
 
 ---
 
-## 🚀 Expected Effect
+##  Expected Effect
 
 - 개인 맞춤형 디톡스 방향 제공
 - 자기 통제 기반 스마트폰 사용 습관 형성
@@ -100,7 +100,7 @@
 
 ---
 
-## 🔮 Future Work
+##  Future Work
 
 - 디톡스 미션 인증 기능 고도화 (지도·센서 활용)
 - 위치 기반 디톡스 모임 추천 (Map API)
@@ -109,7 +109,7 @@
 
 ---
 
-## 📫 Contact
+##  Contact
 
 - **Email**: longvaca0213@gmail.com  
 - **Team**: BridgeON
