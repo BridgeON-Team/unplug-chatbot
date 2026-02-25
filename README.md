@@ -1,115 +1,115 @@
-# UnPlug
-### MSA ベース AI スマートフォン・デジタルデトックスサービス
+#  UnPlug
+### MSA 기반 AI 스마트폰 디톡스 서비스
 
-> スマートフォンの過度な依存を緩和し、  
-> ユーザーが自ら健全なスマートフォン利用習慣を形成できるよう支援する  
-> **AI ベースのデジタルウェルビーイングサービス**
+> 스마트폰 과의존 문제를 완화하고,  
+> 사용자가 스스로 건강한 스마트폰 사용 습관을 형성하도록 돕는  
+> **AI 기반 디지털 웰빙 서비스**
 
 ---
 
-## Project Overview
+##  Project Overview
 
 - **Project Name**: UnPlug  
-- **Type**: チームプロジェクト（BridgeON）  
-- **Topic**: AI ベース・スマートフォンデトックスサービス  
-- **Architecture**: マイクロサービスアーキテクチャ（MSA）  
-- **Competition**: K-PaaS 活用コンテスト – サービス開発部門  
+- **Type**: Team Project (BridgeON)  
+- **Topic**: AI-based Smartphone Detox Service  
+- **Architecture**: Microservices Architecture (MSA)  
+- **Competition**: K-PaaS 활용 공모전 – 서비스 개발 부문  
 
 ---
 
-## Service Goal
+##  Service Goal
 
-- スマートフォンの過度な利用・依存問題の緩和  
-- 単なる使用時間制限ではなく、**自己制御を重視したデトックス体験の提供**  
-- ユーザーが自身の利用パターンを認識し、調整できる環境の構築  
-- 長期的には健全なデジタルウェルビーイング文化の定着を目指す  
+- 스마트폰 과의존 및 중독 문제 완화  
+- 단순 사용 시간 제한이 아닌 **자기 통제 중심 디톡스 제공**  
+- 사용자가 자신의 이용 패턴을 인식하고 조절할 수 있는 환경 구축  
+- 장기적으로 건강한 디지털 웰빙 문화 확산
 
 ---
 
-## Key Features
+##  Key Features
 
 - **AI Chatbot**
-  - OpenAI API ベース  
-  - ユーザーの利用習慣やアンケート結果に基づいた、個別最適化デトックスコーチング
+  - OpenAI API 기반
+  - 사용자 사용 습관 및 설문 결과를 기반으로 맞춤형 디톡스 코칭 제공
 - **Smartphone Usage Diagnosis**
-  - アンケートによるスマートフォン利用タイプの分析
+  - 설문을 통한 스마트폰 사용 유형 분석
 - **Detox Challenge**
-  - To-do ベースの目標設定および実行管理
+  - To-do 기반 목표 설정 및 수행 관리
 - **Detox Group**
-  - ユーザー同士での共同目標設定・参加機能
+  - 사용자 간 공동 목표 설정 및 참여
 
 ---
 
-## System Architecture (MSA)
+##  System Architecture (MSA)
 
 - **Gateway Service**
-  - 認証およびリクエストのエントリーポイント
+  - 인증 및 요청 진입점
 - **User Service**
-  - ユーザー情報管理
+  - 사용자 정보 관리
 - **Chatbot Service**
-  - AI チャットボットおよび OpenAI API 連携
+  - AI 챗봇 및 OpenAI API 연동
 - **Challenge Service**
-  - デトックスチャレンジ管理
+  - 디톡스 챌린지 관리
 - **Restrict Service**
-  - スマートフォン利用制限・制御ロジック
+  - 스마트폰 사용 제한 및 제어 로직
 
-> 機能単位でサービスを分離し、  
-> 各サービスは **独立したデプロイおよびスケーリング** が可能な構成で設計
+> 기능 단위로 서비스를 분리하고,  
+> 각 서비스는 **독립적인 배포 및 확장**이 가능하도록 설계
 
 ---
 
-## Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React Native
 
 ### Backend (MSA)
-- Spring Boot  
-- API Gateway  
-- OpenAI API（Chatbot）
+- Spring Boot
+- API Gateway
+- OpenAI API (Chatbot)
 
 ### Database
-- MySQL（サービス単位での DB 分離）
+- MySQL (Service-based DB separation)
 
-### Cloud / Infrastructure
-- Naver Cloud Platform  
-- Ncloud Kubernetes Service（NKS）  
-- NGINX（Ingress / Reverse Proxy）  
-- Container Registry  
+### Cloud / Infra
+- Naver Cloud Platform
+- Ncloud Kubernetes Service (NKS)
+- NGINX (Ingress / Reverse Proxy)
+- Container Registry
 - CI/CD Pipeline  
-  - SourceCommit → SourceBuild → Container Registry  
+  - SourceCommit → SourceBuild → Container Registry
 
 ---
 
-## My Role（Backend / Chatbot Service）
+##  My Role (Backend / Chatbot Service)
 
-- Chatbot Service の設計・実装  
-- OpenAI API 連携および AI 応答フロー設計  
-- ユーザー状態に応じたデトックスコーチングロジック実装  
-- MSA 環境における独立したチャットボットサービス運用  
-- Gateway 認証構成の理解およびサービス間連携対応  
-
----
-
-## Expected Effect
-
-- 個人に最適化されたデトックス方針の提示  
-- 自己制御に基づくスマートフォン利用習慣の形成  
-- AI コーチングによるユーザー行動変容の促進  
-- チャレンジ機能を通じた社会的モチベーションの創出  
+- Chatbot Service 설계 및 구현  
+- OpenAI API 연동 및 AI 응답 흐름 설계  
+- 사용자 상태 기반 디톡스 코칭 로직 구현  
+- MSA 환경에서 독립적인 챗봇 서비스 운영  
+- Gateway 인증 구조 이해 및 서비스 연동
 
 ---
 
-## Future Work
+##  Expected Effect
 
-- デトックスミッション認証機能の高度化（位置情報・センサー活用）  
-- 位置情報ベースのデトックスグループ推薦（Map API）  
-- ソーシャルログイン対応（Naver / Kakao / Google）  
-- コミュニティ自動フィルタリング・モニタリング機能  
+- 개인 맞춤형 디톡스 방향 제공
+- 자기 통제 기반 스마트폰 사용 습관 형성
+- AI 코칭을 통한 사용자 행동 변화 유도
+- 챌린지를 통한 사회적 동기 부여
 
 ---
 
-## Contact
+##  Future Work
+
+- 디톡스 미션 인증 기능 고도화 (지도·센서 활용)
+- 위치 기반 디톡스 모임 추천 (Map API)
+- 소셜 로그인 (Naver / Kakao / Google)
+- 커뮤니티 자동 필터링 및 모니터링 기능
+
+---
+
+##  Contact
 
 - **Email**: longvaca0213@gmail.com  
 - **Team**: BridgeON
