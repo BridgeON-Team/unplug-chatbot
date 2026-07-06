@@ -1,115 +1,141 @@
-#  UnPlug
-### MSA 기반 AI 스마트폰 디톡스 서비스
+# UnPlug
 
-> 스마트폰 과의존 문제를 완화하고,  
-> 사용자가 스스로 건강한 스마트폰 사용 습관을 형성하도록 돕는  
-> **AI 기반 디지털 웰빙 서비스**
+### MSAベース AIスマートフォン・デトックスサービス
 
----
-
-##  Project Overview
-
-- **Project Name**: UnPlug  
-- **Type**: Team Project (BridgeON)  
-- **Topic**: AI-based Smartphone Detox Service  
-- **Architecture**: Microservices Architecture (MSA)  
-- **Competition**: K-PaaS 활용 공모전 – 서비스 개발 부문  
+> スマートフォンの過度な利用を軽減し、
+> ユーザー自身が健康的なスマートフォン利用習慣を身につけられるよう支援する
+> **AIを活用したデジタルウェルビーイングサービス**
 
 ---
 
-##  Service Goal
+## Project Overview
 
-- 스마트폰 과의존 및 중독 문제 완화  
-- 단순 사용 시간 제한이 아닌 **자기 통제 중심 디톡스 제공**  
-- 사용자가 자신의 이용 패턴을 인식하고 조절할 수 있는 환경 구축  
-- 장기적으로 건강한 디지털 웰빙 문화 확산
-
----
-
-##  Key Features
-
-- **AI Chatbot**
-  - OpenAI API 기반
-  - 사용자 사용 습관 및 설문 결과를 기반으로 맞춤형 디톡스 코칭 제공
-- **Smartphone Usage Diagnosis**
-  - 설문을 통한 스마트폰 사용 유형 분석
-- **Detox Challenge**
-  - To-do 기반 목표 설정 및 수행 관리
-- **Detox Group**
-  - 사용자 간 공동 목표 설정 및 참여
+* **Project Name**: UnPlug
+* **Type**: Team Project (BridgeON)
+* **Topic**: AI-based Smartphone Detox Service
+* **Architecture**: Microservices Architecture (MSA)
+* **Competition**: K-PaaS活用コンテスト（サービス開発部門）
 
 ---
 
-##  System Architecture (MSA)
+## Service Goal
 
-- **Gateway Service**
-  - 인증 및 요청 진입점
-- **User Service**
-  - 사용자 정보 관리
-- **Chatbot Service**
-  - AI 챗봇 및 OpenAI API 연동
-- **Challenge Service**
-  - 디톡스 챌린지 관리
-- **Restrict Service**
-  - 스마트폰 사용 제한 및 제어 로직
-
-> 기능 단위로 서비스를 분리하고,  
-> 각 서비스는 **독립적인 배포 및 확장**이 가능하도록 설계
+* スマートフォンの過度な利用・依存の軽減
+* 利用時間を制限するだけではなく、**自己管理を重視したデトックス体験**を提供
+* ユーザー自身が利用パターンを把握し、主体的に改善できる環境を構築
+* 長期的に健全なデジタルウェルビーイング文化の普及を目指す
 
 ---
 
-##  Tech Stack
+## Key Features
+
+### AI Chatbot
+
+* OpenAI APIを活用
+* 利用習慣やアンケート結果をもとに、ユーザーごとのデトックスコーチングを提供
+
+### Smartphone Usage Diagnosis
+
+* アンケートによるスマートフォン利用タイプの分析
+
+### Detox Challenge
+
+* To-doベースの目標設定・進捗管理
+
+### Detox Group
+
+* ユーザー同士で共通目標を設定し、共同でチャレンジに参加
+
+---
+
+## System Architecture (MSA)
+
+### Gateway Service
+
+* 認証およびリクエストのエントリーポイント
+
+### User Service
+
+* ユーザー情報の管理
+
+### Chatbot Service
+
+* AIチャットボットおよびOpenAI APIとの連携
+
+### Challenge Service
+
+* デトックスチャレンジの管理
+
+### Restrict Service
+
+* スマートフォン利用制限・制御ロジック
+
+> 機能ごとにサービスを分離し、
+> **各サービスが独立してデプロイ・スケールできる構成**を採用しています。
+
+---
+
+## Tech Stack
 
 ### Frontend
-- React Native
+
+* React Native
 
 ### Backend (MSA)
-- Spring Boot
-- API Gateway
-- OpenAI API (Chatbot)
+
+* Spring Boot
+* API Gateway
+* OpenAI API (Chatbot)
 
 ### Database
-- MySQL (Service-based DB separation)
 
-### Cloud / Infra
-- Naver Cloud Platform
-- Ncloud Kubernetes Service (NKS)
-- NGINX (Ingress / Reverse Proxy)
-- Container Registry
-- CI/CD Pipeline  
-  - SourceCommit → SourceBuild → Container Registry
+* MySQL（サービス単位でデータベースを分離）
 
----
+### Cloud / Infrastructure
 
-##  My Role (Backend / Chatbot Service)
+* Naver Cloud Platform
+* Ncloud Kubernetes Service (NKS)
+* NGINX（Ingress / Reverse Proxy）
+* Container Registry
+* CI/CD Pipeline
 
-- Chatbot Service 설계 및 구현  
-- OpenAI API 연동 및 AI 응답 흐름 설계  
-- 사용자 상태 기반 디톡스 코칭 로직 구현  
-- MSA 환경에서 독립적인 챗봇 서비스 운영  
-- Gateway 인증 구조 이해 및 서비스 연동
+  * SourceCommit → SourceBuild → Container Registry
 
 ---
 
-##  Expected Effect
+## My Role (Backend / Chatbot Service)
 
-- 개인 맞춤형 디톡스 방향 제공
-- 자기 통제 기반 스마트폰 사용 습관 형성
-- AI 코칭을 통한 사용자 행동 변화 유도
-- 챌린지를 통한 사회적 동기 부여
-
----
-
-##  Future Work
-
-- 디톡스 미션 인증 기능 고도화 (지도·센서 활용)
-- 위치 기반 디톡스 모임 추천 (Map API)
-- 소셜 로그인 (Naver / Kakao / Google)
-- 커뮤니티 자동 필터링 및 모니터링 기능
+* Chatbot Serviceの設計・実装
+* WebSocket（STOMP + SockJS）を用いたリアルタイムチャット機能の実装
+* OpenAI APIとの連携およびAI応答フローの設計・実装
+* ChatThread・ChatMessageエンティティの設計およびMySQLへのメッセージ保存機能の実装
+* JWT認証を利用したGateway認証アーキテクチャとの連携
+* OpenFeignを用いたサービス間通信の実装
+* ユーザー状態に応じたデトックスコーチングロジックの実装
+* MSA環境における独立したチャットボットサービスの開発・運用
+* チームメンバーと連携し、API仕様の調整や機能設計に参加
 
 ---
 
-##  Contact
+## Expected Benefits
 
-- **Email**: longvaca0213@gmail.com  
-- **Team**: BridgeON
+* ユーザーごとに最適化されたデトックスプランの提供
+* 自己管理を促進するスマートフォン利用習慣の形成
+* AIコーチングによる行動変容の支援
+* チャレンジ機能を通じた継続的なモチベーションの向上
+
+---
+
+## Future Work
+
+* 地図・センサーを活用したデトックスミッション認証機能の高度化
+* 位置情報を活用したデトックスコミュニティのレコメンド
+* ソーシャルログイン対応（Naver / Kakao / Google）
+* コミュニティ投稿の自動フィルタリング・モニタリング機能
+
+---
+
+## Contact
+
+* **Email**: [longvaca0213@gmail.com](mailto:longvaca0213@gmail.com)
+* **Team**: BridgeON
